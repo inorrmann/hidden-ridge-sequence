@@ -3,90 +3,73 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Force Logic Grid</title>
+  <title>Hidden Ridge Pulse</title>
   <style>
-    body {
-      font-family: 'Courier New', monospace;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #000;
-      color: #00ff00;
-    }
-    #game-container {
-      text-align: center;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
-      border: 2px solid #00ff00;
-      border-radius: 5px;
-    }
-    input {
-      padding: 10px;
-      margin: 10px;
-      font-size: 16px;
-      width: 40px;
-      background-color: #000;
-      color: #00ff00;
-      border: 1px solid #00ff00;
-      text-transform: uppercase;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: #00ff00;
-      color: #000;
-      border: none;
-      border-radius: 3px;
-    }
-    button:hover {
-      background-color: #00cc00;
-    }
-    #result {
-      margin-top: 20px;
-      font-weight: bold;
-    }
-    ul {
-      text-align: left;
-      max-width: 300px;
-    }
+      body {
+          font-family: 'Courier New', monospace;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #000;
+          color: #00ff00;
+      }
+      #game-container {
+          text-align: center;
+          background: rgba(0, 0, 0, 0.8);
+          padding: 20px;
+          border: 2px solid #00ff00;
+          border-radius: 5px;
+      }
+      input {
+          padding: 10px;
+          margin: 10px;
+          font-size: 16px;
+          background-color: #000;
+          color: #00ff00;
+          border: 1px solid #00ff00;
+          width: 200px
+      }
+      button {
+          padding: 10px 20px;
+          font-size: 16px;
+          cursor: pointer;
+          background-color: #00ff00;
+          color: #000;
+          border: none;
+          border-radius: 3px;
+      }
+      button:hover {
+          background-color: #00cc00;
+      }
+      #result {
+          margin-top: 20px;
+          font-weight: bold;
+      }
   </style>
 </head>
 <body>
-  <div id="game-container">
-    <h1>FORCE LOGIC GRID</h1>
-    <p>DEDUCE 3-LETTER CODE (A-D):</p>
-    <ul>
-      <li>No letter repeats.</li>
-      <li>First letter is after B in alphabet.</li>
-      <li>Second letter is not A.</li>
-      <li>Third letter is before D.</li>
-    </ul>
-    <div>
-      <input type="text" id="letter1" placeholder="1st" maxlength="1">
-      <input type="text" id="letter2" placeholder="2nd" maxlength="1">
-      <input type="text" id="letter3" placeholder="3rd" maxlength="1">
-    </div>
-    <button onclick="checkAnswer()">SUBMIT</button>
-    <div id="result"></div>
-  </div>
-  <script>
-    function checkAnswer() {
-      const l1 = document.getElementById('letter1').value.toUpperCase();
-      const l2 = document.getElementById('letter2').value.toUpperCase();
-      const l3 = document.getElementById('letter3').value.toUpperCase();
-      const resultDiv = document.getElementById('result');
-      if (l1 !== l2 && l1 !== l3 && l2 !== l3 && l1 > 'B' && l2 !== 'A' && l3 < 'D' && 'A B C D'.includes(l1 + l2 + l3)) {
-        resultDiv.innerHTML = 'CODE UNLOCKED. PASSWORD: <strong>FORCEGRID</strong>';
-        resultDiv.style.color = '#00ff00';
-      } else {
-        resultDiv.innerHTML = 'CODE LOCKED. REASSESS CLUES.';
-        resultDiv.style.color = '#ff0000';
-      }
+<div id="game-container">
+  <h1>HIDDEN RIDGE PULSE</h1>
+  <p>FIND THE NEXT NUMBER IN THE SERIES: 2, 4, 8, 14, 22, 32, ?</p>
+  <input type="number" id="answer" placeholder="ENTER NEXT NUMBER">
+  <button onclick="checkAnswer()">SUBMIT</button>
+  <div id="result"></div>
+</div>
+<script>
+  function checkAnswer() {
+    const answer = parseInt(document.getElementById('answer').value);
+    const resultDiv = document.getElementById('result');
+    if (answer === 44) {
+      resultDiv.innerHTML = 'SEQUENCE MATCHED. PASSWORD: <strong>DUSK</strong>';
+      resultDiv.style.color = '#00ff00';
+    } else {
+      resultDiv.innerHTML = 'SEQUENCE MISMATCH. REPROCESS.';
+      resultDiv.style.color = '#ff0000';
     }
-  </script>
+  }
+</script>
 </body>
 </html>
